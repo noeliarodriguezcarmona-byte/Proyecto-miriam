@@ -1,0 +1,41 @@
+# Publica el repositorio en GitHub Pages en cada push.
+#
+# configure-pages con enablement activa Pages en el repositorio la primera vez,
+# así no hace falta entrar a los ajustes a mano.
+name: Publicar en GitHub Pages
+
+on:
+  push:
+    branches: [claude/hola-g7qaro]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Un despliegue cada vez, sin cancelar el que ya esté en marcha
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  desplegar:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.despliegue.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/configure-pages@v5
+        with:
+          enablement: true
+
+      # El sitio es estático: se sube la carpeta tal cual, sin compilar nada
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+
+      - id: despliegue
+        uses: actions/deploy-pages@v4
