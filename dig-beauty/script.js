@@ -163,6 +163,33 @@ function formularioWhatsApp() {
   }));
 }
 
+/* ---------------------------------------------------------
+   Carrusel de valoraciones
+   --------------------------------------------------------- */
+
+/** La pista lleva dos copias seguidas para que el desplazamiento no dé saltos.
+    La copia se regenera al editar, así refleja siempre lo que hay escrito. */
+function duplicarCarrusel() {
+  const pista = $('#pista');
+  const original = $('#opiniones');
+  if (!pista || !original) return;
+
+  $$('[data-copia]', pista).forEach((c) => c.remove());
+
+  const copia = original.cloneNode(true);
+  copia.removeAttribute('id');
+  copia.dataset.copia = 'si';
+  copia.setAttribute('aria-hidden', 'true');
+  // sin marcas de edición: si no, el panel montaría dos campos por texto
+  $$('[data-txt], [data-txt-lista]', copia).forEach((el) => {
+    el.removeAttribute('data-txt');
+    el.removeAttribute('data-txt-lista');
+  });
+  $$('a, button', copia).forEach((el) => el.setAttribute('tabindex', '-1'));
+
+  pista.appendChild(copia);
+}
+
 /** La inicial del círculo sale del nombre, para que no se descuadren al editar. */
 function iniciales() {
   $$('.firma').forEach((firma) => {
@@ -270,6 +297,7 @@ function panelEdicion() {
       guardar({ ...guardado(), [campo.clave]: area.value });
       if (campo.clave === 'donde.direccion') enlaceMapa();
       if (campo.clave.endsWith('.autora')) iniciales();
+      if (campo.clave.startsWith('opinion.')) { iniciales(); duplicarCarrusel(); }
     });
 
     etiqueta.append(span, area);
@@ -317,6 +345,7 @@ function panelEdicion() {
 
 aplicarGuardados();
 iniciales();
+duplicarCarrusel();
 avisoProvisional();
 cabecera();
 menuMovil();

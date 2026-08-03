@@ -58,6 +58,59 @@
   <section class="inicio" id="inicio">
     <div class="inicio__forma" aria-hidden="true"></div>
 
+    <!-- Bodegón de cosmética: frascos, tarro y hojas -->
+    <svg class="inicio__escena" viewBox="0 0 520 580" aria-hidden="true">
+      <defs>
+        <linearGradient id="vidrio" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%"  stop-color="var(--albaricoque)" stop-opacity=".95"/>
+          <stop offset="100%" stop-color="var(--naranja)" stop-opacity=".75"/>
+        </linearGradient>
+        <linearGradient id="vidrio2" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%"  stop-color="var(--arena)"/>
+          <stop offset="100%" stop-color="var(--albaricoque)"/>
+        </linearGradient>
+      </defs>
+
+      <!-- hojas -->
+      <g class="escena__hoja">
+        <path d="M120 300c0-62 40-112 96-128-6 66-40 112-96 128Z"/>
+        <path d="M120 300c-56-16-90-62-96-128 56 16 90 62 96 128Z" opacity=".65"/>
+        <path d="M120 300v150" class="escena__tallo"/>
+      </g>
+
+      <!-- tarro ancho -->
+      <g class="escena__pieza" style="--y:0">
+        <rect x="52" y="392" width="150" height="112" rx="26" fill="url(#vidrio2)"/>
+        <rect x="40" y="360" width="174" height="44" rx="20" fill="var(--naranja)" opacity=".9"/>
+        <ellipse cx="127" cy="360" rx="87" ry="13" fill="var(--albaricoque)"/>
+      </g>
+
+      <!-- frasco con dosificador -->
+      <g class="escena__pieza" style="--y:1">
+        <rect x="236" y="236" width="112" height="268" rx="30" fill="url(#vidrio)"/>
+        <rect x="266" y="196" width="52" height="48" rx="12" fill="var(--naranja)"/>
+        <rect x="278" y="160" width="28" height="44" rx="10" fill="var(--naranja)" opacity=".85"/>
+        <path d="M292 160h44a14 14 0 0 1 14 14v10" class="escena__tubo"/>
+        <rect x="258" y="300" width="68" height="86" rx="14" fill="var(--fondo)" opacity=".55"/>
+      </g>
+
+      <!-- frasco cuentagotas -->
+      <g class="escena__pieza" style="--y:2">
+        <rect x="378" y="318" width="92" height="186" rx="24" fill="var(--naranja)" opacity=".72"/>
+        <rect x="400" y="282" width="48" height="42" rx="10" fill="var(--tinta)" opacity=".55"/>
+        <rect x="416" y="236" width="16" height="52" rx="8" fill="var(--tinta)" opacity=".4"/>
+        <circle cx="424" cy="228" r="16" fill="var(--tinta)" opacity=".45"/>
+      </g>
+
+      <!-- gotas sueltas -->
+      <circle class="escena__gota" style="--g:0" cx="196" cy="196" r="9"/>
+      <circle class="escena__gota" style="--g:1" cx="392" cy="150" r="6"/>
+      <circle class="escena__gota" style="--g:2" cx="118" cy="150" r="5"/>
+
+      <!-- superficie -->
+      <rect x="0" y="504" width="520" height="3" rx="1.5" fill="var(--naranja)" opacity=".35"/>
+    </svg>
+
     <div class="inicio__texto">
       <p class="etiqueta sube" data-txt="inicio.etiqueta">Centro de estética y cosmética</p>
       <h1 class="sube" data-txt="inicio.titulo">Cuidarte no es un lujo. Es mantenimiento.</h1>
@@ -118,6 +171,7 @@
     <section class="servicio" id="estetica">
       <div class="servicio__forma" style="--h1:22; --h2:38" aria-hidden="true"></div>
       <div class="servicio__txt sube">
+        <svg class="servicio__icono" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="6"/><path d="M24 8v4M24 36v4M8 24h4M36 24h4M13 13l3 3M32 32l3 3M35 13l-3 3M16 32l-3 3"/></svg>
         <p class="etiqueta" data-txt="estetica.etiqueta">Servicio</p>
         <h2 data-txt="estetica.titulo">Estética avanzada</h2>
         <p class="entrada" data-txt="estetica.entrada">
@@ -137,6 +191,7 @@
     <section class="servicio servicio--inv" id="faciales">
       <div class="servicio__forma" style="--h1:14; --h2:32" aria-hidden="true"></div>
       <div class="servicio__txt sube">
+        <svg class="servicio__icono" viewBox="0 0 48 48" aria-hidden="true"><path d="M24 7c7 9 11 14.5 11 20a11 11 0 0 1-22 0c0-5.5 4-11 11-20Z"/><path d="M19 28a5 5 0 0 0 5 5"/></svg>
         <p class="etiqueta" data-txt="faciales.etiqueta">Servicio</p>
         <h2 data-txt="faciales.titulo">Tratamientos faciales</h2>
         <p class="entrada" data-txt="faciales.entrada">
@@ -156,6 +211,7 @@
     <section class="servicio" id="masajes">
       <div class="servicio__forma" style="--h1:28; --h2:8" aria-hidden="true"></div>
       <div class="servicio__txt sube">
+        <svg class="servicio__icono" viewBox="0 0 48 48" aria-hidden="true"><path d="M6 18c4.5-4 9-4 13.5 0s9 4 13.5 0 9-4 9 0"/><path d="M6 27c4.5-4 9-4 13.5 0s9 4 13.5 0 9-4 9 0"/><path d="M6 36c4.5-4 9-4 13.5 0s9 4 13.5 0 9-4 9 0"/></svg>
         <p class="etiqueta" data-txt="masajes.etiqueta">Servicio</p>
         <h2 data-txt="masajes.titulo">Masajes</h2>
         <p class="entrada" data-txt="masajes.entrada">
@@ -175,6 +231,7 @@
     <section class="servicio servicio--inv" id="depilacion">
       <div class="servicio__forma" style="--h1:18; --h2:44" aria-hidden="true"></div>
       <div class="servicio__txt sube">
+        <svg class="servicio__icono" viewBox="0 0 48 48" aria-hidden="true"><path d="M27 5 14 26h8l-3 17 15-22h-8l3-16Z"/></svg>
         <p class="etiqueta" data-txt="depilacion.etiqueta">Servicio</p>
         <h2 data-txt="depilacion.titulo">Depilación</h2>
         <p class="entrada" data-txt="depilacion.entrada">
@@ -194,6 +251,7 @@
     <section class="servicio" id="productos">
       <div class="servicio__forma" style="--h1:34; --h2:16" aria-hidden="true"></div>
       <div class="servicio__txt sube">
+        <svg class="servicio__icono" viewBox="0 0 48 48" aria-hidden="true"><path d="M20 6h8v7h-8zM17 13h14a4 4 0 0 1 4 4v21a4 4 0 0 1-4 4H17a4 4 0 0 1-4-4V17a4 4 0 0 1 4-4Z"/><path d="M13 26h22"/></svg>
         <p class="etiqueta" data-txt="productos.etiqueta">Servicio</p>
         <h2 data-txt="productos.titulo">Productos</h2>
         <p class="entrada" data-txt="productos.entrada">
@@ -227,7 +285,9 @@
       </div>
     </div>
 
-    <div class="opiniones">
+    <div class="carrusel sube" id="carrusel">
+      <div class="carrusel__pista" id="pista">
+        <div class="opiniones" id="opiniones">
 
       <figure class="opinion sube">
         <div class="estrellas" aria-label="5 de 5 estrellas">★★★★★</div>
@@ -304,6 +364,8 @@
         </figcaption>
       </figure>
 
+        </div>
+      </div>
     </div>
   </section>
 
