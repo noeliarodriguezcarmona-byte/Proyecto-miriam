@@ -265,6 +265,28 @@ h1 em {
   object-fit: cover;
   object-position: center 30%;
   filter: contrast(1.04) saturate(.95);
+
+  /* Entrada: la foto se descubre de abajo arriba, y luego queda un vaivén
+     lentísimo. clip-path y transform son propiedades distintas, así que las
+     dos animaciones conviven sin pisarse. */
+  animation:
+    descubrir 1.3s cubic-bezier(.22, .61, .36, 1) .2s both,
+    vaiven 26s ease-in-out 1.5s infinite alternate;
+}
+@keyframes descubrir {
+  from { opacity: 0; clip-path: inset(100% 0 0 0); }
+  to   { opacity: 1; clip-path: inset(0 0 0 0); }
+}
+@keyframes vaiven {
+  from { transform: scale(1); }
+  to   { transform: scale(1.05); }
+}
+
+/* El marco naranja se dibuja después de la foto */
+.portada__marco { animation: trazar 1s ease 1.1s both; }
+@keyframes trazar {
+  from { opacity: 0; transform: translate(-1rem, -1rem); }
+  to   { opacity: 1; transform: none; }
 }
 /* Marco de cortesía mientras no está la foto */
 .hueco-foto {
@@ -358,6 +380,12 @@ h1 em {
     linear-gradient(color-mix(in srgb, var(--negro) 80%, transparent),
                     color-mix(in srgb, var(--negro) 86%, transparent)),
     url("tratamientos.jpg") center 30% / cover no-repeat;
+}
+
+/* En escritorio el bloque es mucho más alto que la foto: anclada a la ventana
+   se ve entera en vez de estirada en una franja. */
+@media (min-width: 901px) {
+  .servicios::before { background-attachment: fixed; }
 }
 
 /* Sobre la foto el secundario baja a 3,50 de contraste en el peor caso.
