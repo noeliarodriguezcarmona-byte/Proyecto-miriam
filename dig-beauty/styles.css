@@ -332,6 +332,7 @@ h3 {
 
 .inicio {
   position: relative;
+  overflow: hidden;   /* recorta la forma, que se sale por la derecha a propósito */
   display: grid;
   align-items: center;
   min-height: min(88svh, 46rem);
@@ -490,11 +491,74 @@ h3 {
 }
 .valoraciones h2 { margin: 1.1rem auto 3.2rem; max-width: 18ch; }
 
+/* Nota media, sobre las tarjetas */
+.nota-media {
+  display: inline-flex;
+  align-items: center;
+  gap: 1.1rem;
+  margin-bottom: 2.8rem;
+  padding: 1rem 1.7rem 1rem 1.4rem;
+  text-align: left;
+  background: var(--tarjeta);
+  border: 1px solid var(--linea);
+  border-radius: 999px;
+  box-shadow: var(--sombra);
+}
+.nota-media__cifra {
+  font-family: var(--geo);
+  font-size: 2.6rem;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: -.02em;
+  font-variant-numeric: tabular-nums;
+}
+.nota-media__pie { font-size: .8rem; color: var(--tinta-suave); }
+.estrellas--grande { font-size: 1.05rem; }
+
 .opiniones {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr));
   gap: 1.2rem;
   text-align: left;
+}
+
+/* Firma de cada valoración */
+.firma {
+  display: flex;
+  align-items: center;
+  gap: .8rem;
+  margin-top: auto;
+  padding-top: 1.1rem;
+  border-top: 1px solid var(--linea);
+}
+.firma__inicial {
+  display: grid;
+  place-items: center;
+  flex: 0 0 auto;
+  width: 2.3rem;
+  height: 2.3rem;
+  font-family: var(--geo);
+  font-size: .95rem;
+  font-weight: 500;
+  color: var(--naranja-ink);
+  background: var(--naranja);
+  border-radius: 50%;
+}
+.firma b {
+  display: block;
+  font-family: var(--geo);
+  font-size: .92rem;
+  font-weight: 500;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--tinta);
+}
+.firma small {
+  display: block;
+  font-size: .76rem;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--tinta-suave);
 }
 .opinion {
   display: flex;
@@ -512,14 +576,7 @@ h3 {
   line-height: 1.6;
   text-wrap: pretty;
 }
-.opinion figcaption {
-  margin-top: auto;
-  font-family: var(--geo);
-  font-size: .72rem;
-  letter-spacing: .16em;
-  text-transform: uppercase;
-  color: var(--tinta-suave);
-}
+
 
 /* ---------- dónde estamos ---------- */
 
@@ -820,6 +877,7 @@ h3 {
   .servicio--inv .servicio__forma { left: -18%; right: auto; }
   .inicio__forma { width: 84vw; right: -28%; opacity: .42; }
   .campos { grid-template-columns: 1fr; }
+  .nota-media { width: 100%; justify-content: center; border-radius: var(--radio); }
   .panel__abrir { left: 1rem; right: auto; }
 }
 

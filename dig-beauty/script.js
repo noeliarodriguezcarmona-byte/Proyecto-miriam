@@ -163,6 +163,15 @@ function formularioWhatsApp() {
   }));
 }
 
+/** La inicial del círculo sale del nombre, para que no se descuadren al editar. */
+function iniciales() {
+  $$('.firma').forEach((firma) => {
+    const nombre = $('b', firma)?.textContent.trim() || '';
+    const circulo = $('.firma__inicial', firma);
+    if (circulo) circulo.textContent = nombre.charAt(0).toUpperCase();
+  });
+}
+
 /* ---------------------------------------------------------
    Panel de edición de textos
    --------------------------------------------------------- */
@@ -185,7 +194,8 @@ const GRUPOS = {
 
 const ETIQUETAS = {
   etiqueta: 'Etiqueta', titulo: 'Título', entrada: 'Descripción',
-  texto: 'Texto', autora: 'Autora', lista: 'Lista (una por línea)',
+  texto: 'Valoración', autora: 'Nombre', servicio: 'Servicio', fecha: 'Fecha',
+  lista: 'Lista (una por línea)', nota: 'Nota media', resumen: 'Pie de la nota',
   direccion: 'Dirección', horario: 'Horario', telefono: 'Teléfono',
   correo: 'Correo', lema: 'Lema', p1: 'Párrafo 1', p2: 'Párrafo 2',
 };
@@ -259,6 +269,7 @@ function panelEdicion() {
       escribir(campo, area.value);
       guardar({ ...guardado(), [campo.clave]: area.value });
       if (campo.clave === 'donde.direccion') enlaceMapa();
+      if (campo.clave.endsWith('.autora')) iniciales();
     });
 
     etiqueta.append(span, area);
@@ -305,6 +316,7 @@ function panelEdicion() {
    --------------------------------------------------------- */
 
 aplicarGuardados();
+iniciales();
 avisoProvisional();
 cabecera();
 menuMovil();
