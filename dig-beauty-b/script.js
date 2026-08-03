@@ -89,6 +89,17 @@ function avisoMuestra() {
   });
 }
 
+/** Si una foto no está todavía, se enseña su marco en vez del icono de rota. */
+function fotos() {
+  const foto = $('#foto-portada');
+  const hueco = $('#hueco-portada');
+  if (!foto || !hueco) return;
+
+  const faltar = () => { foto.style.display = 'none'; hueco.hidden = false; };
+  if (foto.complete && foto.naturalWidth === 0) faltar();
+  foto.addEventListener('error', faltar);
+}
+
 function irAlMapa() {
   const direccion = $('[data-txt="lugar.direccion"]').textContent.trim();
   $('#ir-mapa').href = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(direccion)}`;
@@ -333,6 +344,7 @@ barra();
 menu();
 menuActivo();
 irAlMapa();
+fotos();
 valoraciones();
 formulario();
 panel();

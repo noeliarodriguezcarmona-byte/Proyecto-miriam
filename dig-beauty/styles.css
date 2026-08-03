@@ -387,44 +387,55 @@ h3 {
   55%,100% { transform: translateY(100%); }
 }
 
-/* Bodegón de cosmética del inicio */
-.inicio__escena {
+/* Foto de portada */
+.inicio__foto {
   position: absolute;
   z-index: 1;
-  right: clamp(-3rem, 1vw, 2rem);
-  bottom: 0;
-  width: min(40vw, 27rem);
-  height: auto;
+  right: clamp(1rem, 3vw, 3rem);
+  top: 50%;
+  transform: translateY(-50%);
+  width: min(38vw, 25rem);
+  margin: 0;
 }
-.escena__pieza {
-  transform-origin: center bottom;
-  animation: flotar 9s ease-in-out infinite;
-  animation-delay: calc(var(--y) * -3s);
-}
-@keyframes flotar {
-  0%, 100% { transform: translateY(0); }
-  50%      { transform: translateY(-10px); }
-}
-.escena__hoja path { fill: var(--naranja); opacity: .5; }
-.escena__hoja .escena__tallo {
-  fill: none;
-  stroke: var(--naranja);
-  stroke-width: 3;
-  opacity: .45;
-}
-.escena__tubo {
-  fill: none;
-  stroke: var(--naranja);
-  stroke-width: 7;
-  stroke-linecap: round;
-}
-.escena__gota {
-  fill: var(--naranja);
-  opacity: .5;
-  animation: flotar 7s ease-in-out infinite;
-  animation-delay: calc(var(--g) * -2.2s);
+.inicio__foto img {
+  width: 100%;
+  height: auto;        /* si no, el atributo height del HTML pisa aspect-ratio */
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border-radius: var(--radio);
+  box-shadow: var(--sombra);
 }
 
+/* Marco de cortesía mientras no está la foto */
+.hueco-foto {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: .5rem;
+  padding: 1.5rem;
+  text-align: center;
+  background:
+    repeating-linear-gradient(-45deg, transparent 0 12px, color-mix(in srgb, var(--albaricoque) 22%, transparent) 12px 24px),
+    var(--fondo-2);
+  border: 1px dashed var(--linea-fuerte);
+  border-radius: var(--radio);
+}
+.hueco-foto[hidden] { display: none; }
+.hueco-foto svg {
+  width: 42px; height: 42px;
+  fill: none; stroke: var(--naranja); stroke-width: 2;
+  stroke-linecap: round; stroke-linejoin: round; opacity: .8;
+}
+.hueco-foto p { font-family: var(--geo); font-size: .95rem; }
+.hueco-foto small { font-size: .78rem; color: var(--tinta-suave); }
+.hueco-foto code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: .95em;
+  color: var(--naranja-txt);
+}
 /* ---------- filosofía ---------- */
 
 .filosofia {
@@ -1088,7 +1099,7 @@ h3 {
   .servicio--inv .servicio__forma { left: -18%; right: auto; }
   .inicio__forma { width: 84vw; right: -28%; opacity: .42; }
   .inicio__texto { max-width: 100%; }
-  .inicio__escena { position: static; width: 74%; margin: 2.5rem auto 0; display: block; }
+  .inicio__foto { position: static; transform: none; width: min(100%, 22rem); margin: 2.5rem auto 0; }
   .opinion { width: 15.5rem; }
   .dig { grid-template-columns: 1fr; }
   .dig__retrato { max-width: 22rem; }

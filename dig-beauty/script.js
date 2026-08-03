@@ -163,15 +163,18 @@ function formularioWhatsApp() {
   }));
 }
 
-/** Mientras no exista noelia.jpg, se enseña el marco de cortesía. */
-function retrato() {
-  const foto = $('#foto-noelia');
-  const hueco = $('#retrato-hueco');
-  if (!foto || !hueco) return;
+/** Si una foto no está todavía, se enseña su marco de cortesía en vez del
+    icono de imagen rota del navegador. */
+function fotos() {
+  [['#foto-noelia', '#retrato-hueco'], ['#foto-portada', '#hueco-portada']].forEach(([sImg, sHueco]) => {
+    const foto = $(sImg);
+    const hueco = $(sHueco);
+    if (!foto || !hueco) return;
 
-  const faltar = () => { foto.style.display = 'none'; hueco.hidden = false; };
-  if (foto.complete && foto.naturalWidth === 0) faltar();
-  foto.addEventListener('error', faltar);
+    const faltar = () => { foto.style.display = 'none'; hueco.hidden = false; };
+    if (foto.complete && foto.naturalWidth === 0) faltar();
+    foto.addEventListener('error', faltar);
+  });
 }
 
 /* ---------------------------------------------------------
@@ -362,7 +365,7 @@ function panelEdicion() {
 aplicarGuardados();
 iniciales();
 duplicarCarrusel();
-retrato();
+fotos();
 avisoProvisional();
 cabecera();
 menuMovil();

@@ -263,9 +263,38 @@ h1 em {
   height: auto;        /* si no, el atributo height del HTML pisa aspect-ratio */
   aspect-ratio: 4 / 5;
   object-fit: cover;
-  object-position: center 18%;
-  filter: grayscale(.35) contrast(1.06);
+  object-position: center 30%;
+  filter: contrast(1.04) saturate(.95);
 }
+/* Marco de cortesía mientras no está la foto */
+.hueco-foto {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: .5rem;
+  padding: 1.5rem;
+  text-align: center;
+  background:
+    repeating-linear-gradient(-45deg, transparent 0 12px, color-mix(in srgb, var(--naranja) 12%, transparent) 12px 24px),
+    var(--negro-2);
+  border: 1px dashed var(--linea-2);
+}
+.hueco-foto[hidden] { display: none; }
+.hueco-foto svg {
+  width: 42px; height: 42px;
+  fill: none; stroke: var(--naranja); stroke-width: 2;
+  stroke-linecap: round; stroke-linejoin: round; opacity: .85;
+}
+.hueco-foto p { font-family: var(--serif); font-size: 1.1rem; }
+.hueco-foto small { font-size: .78rem; color: var(--hueso-2); }
+.hueco-foto code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  color: var(--champan);
+}
+
 /* Marco desplazado: el gesto gráfico de esta versión */
 .portada__marco {
   position: absolute;
