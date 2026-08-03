@@ -457,6 +457,143 @@ h3 {
 .valores h3 { margin-bottom: .5rem; }
 .valores p { font-size: .93rem; color: var(--tinta-suave); }
 
+/* ---------- quién es DIG ---------- */
+
+.dig {
+  display: grid;
+  grid-template-columns: minmax(0, .82fr) minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(2rem, 6vw, 5rem);
+  max-width: var(--ancho);
+  margin: 0 auto;
+  padding: var(--aire) clamp(1.3rem, 5vw, 3rem);
+  border-top: 1px solid var(--linea);
+}
+
+.retrato {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  background: var(--fondo-2);
+  border-radius: var(--radio);
+  box-shadow: var(--sombra);
+}
+.retrato img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 22%;
+  display: block;
+}
+/* Marco de cortesía mientras no está la foto */
+.retrato__hueco {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: .5rem;
+  padding: 1.5rem;
+  text-align: center;
+  background:
+    repeating-linear-gradient(-45deg, transparent 0 12px, color-mix(in srgb, var(--albaricoque) 22%, transparent) 12px 24px),
+    var(--fondo-2);
+  border: 1px dashed var(--linea-fuerte);
+  border-radius: var(--radio);
+}
+.retrato__hueco[hidden] { display: none; }
+.retrato__hueco svg {
+  width: 44px; height: 44px;
+  fill: none; stroke: var(--naranja); stroke-width: 2;
+  stroke-linecap: round; opacity: .8;
+}
+.retrato__hueco p { font-family: var(--geo); font-size: .95rem; }
+.retrato__hueco small { font-size: .78rem; color: var(--tinta-suave); }
+.retrato__hueco code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: .95em;
+  color: var(--naranja-txt);
+}
+
+.retrato__pie {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1.1rem;
+  padding-left: 1rem;
+  border-left: 2px solid var(--naranja);
+}
+.retrato__pie b {
+  font-family: var(--geo);
+  font-size: 1.15rem;
+  font-weight: 500;
+}
+.retrato__pie small {
+  font-size: .82rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--naranja-txt);
+}
+
+.dig h2 { margin: 1rem 0 1.2rem; }
+
+.titulos { display: grid; gap: .55rem; margin-top: 2rem; }
+.titulos li {
+  position: relative;
+  padding-left: 1.7rem;
+  font-size: .95rem;
+  color: var(--tinta-suave);
+}
+.titulos li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: .52em;
+  width: 10px;
+  height: 6px;
+  border-left: 2px solid var(--naranja);
+  border-bottom: 2px solid var(--naranja);
+  transform: rotate(-45deg);
+}
+
+.cifras {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1px;
+  margin-top: 2.2rem;
+  background: var(--linea);
+  border: 1px solid var(--linea);
+  border-radius: var(--radio);
+  overflow: hidden;
+}
+.cifra {
+  flex: 1 1 9rem;
+  padding: 1.3rem 1.4rem;
+  background: var(--fondo);
+}
+.cifra b {
+  display: block;
+  font-family: var(--geo);
+  font-size: 2.4rem;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: -.03em;
+  color: var(--naranja-txt);
+  font-variant-numeric: tabular-nums;
+}
+.cifra span {
+  display: block;
+  margin-top: .35rem;
+  font-size: .84rem;
+  color: var(--tinta-suave);
+}
+
+.dig__cierre {
+  margin-top: 2rem;
+  color: var(--tinta-suave);
+  text-wrap: pretty;
+}
+
 /* ---------- servicios ---------- */
 
 .servicios { display: flex; flex-direction: column; }
@@ -953,6 +1090,8 @@ h3 {
   .inicio__texto { max-width: 100%; }
   .inicio__escena { position: static; width: 74%; margin: 2.5rem auto 0; display: block; }
   .opinion { width: 15.5rem; }
+  .dig { grid-template-columns: 1fr; }
+  .dig__retrato { max-width: 22rem; }
   .campos { grid-template-columns: 1fr; }
   .nota-media { width: 100%; justify-content: center; border-radius: var(--radio); }
   .panel__abrir { left: 1rem; right: auto; }

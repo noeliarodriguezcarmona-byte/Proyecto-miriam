@@ -163,6 +163,17 @@ function formularioWhatsApp() {
   }));
 }
 
+/** Mientras no exista noelia.jpg, se enseña el marco de cortesía. */
+function retrato() {
+  const foto = $('#foto-noelia');
+  const hueco = $('#retrato-hueco');
+  if (!foto || !hueco) return;
+
+  const faltar = () => { foto.style.display = 'none'; hueco.hidden = false; };
+  if (foto.complete && foto.naturalWidth === 0) faltar();
+  foto.addEventListener('error', faltar);
+}
+
 /* ---------------------------------------------------------
    Carrusel de valoraciones
    --------------------------------------------------------- */
@@ -206,6 +217,7 @@ function iniciales() {
 const GRUPOS = {
   inicio: 'Inicio',
   filosofia: 'Quiénes somos',
+  dig: 'Esto es DIG',
   valores: 'Valores',
   estetica: 'Estética avanzada',
   faciales: 'Tratamientos faciales',
@@ -225,6 +237,10 @@ const ETIQUETAS = {
   lista: 'Lista (una por línea)', nota: 'Nota media', resumen: 'Pie de la nota',
   direccion: 'Dirección', horario: 'Horario', telefono: 'Teléfono',
   correo: 'Correo', lema: 'Lema', p1: 'Párrafo 1', p2: 'Párrafo 2',
+  nombre: 'Nombre', cargo: 'Cargo', cierre: 'Cierre',
+  titulaciones: 'Titulaciones (una por línea)',
+  cifra1: 'Cifra 1', cifra1pie: 'Pie de la cifra 1',
+  cifra2: 'Cifra 2', cifra2pie: 'Pie de la cifra 2',
 };
 
 /** Todos los elementos editables: texto suelto y listas. */
@@ -346,6 +362,7 @@ function panelEdicion() {
 aplicarGuardados();
 iniciales();
 duplicarCarrusel();
+retrato();
 avisoProvisional();
 cabecera();
 menuMovil();
