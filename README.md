@@ -31,7 +31,7 @@ La página se adapta sola a la preferencia del dispositivo.
 | `index.html`   | Estructura de la página y la ilustración de chakras (SVG) |
 | `styles.css`   | Paleta, tipografías y todo el diseño |
 | `script.js`    | Calendario, franjas horarias y generación del mensaje de WhatsApp |
-| `legal.html`   | Aviso legal, política de privacidad y de cookies |
+| `aviso-legal.html` · `privacidad.html` · `cookies.html` | Un texto legal por página |
 | `404.html`     | Página de error |
 | `og-image.png` | Imagen que se ve al compartir el enlace (1200 × 630) |
 | `robots.txt` · `sitemap.xml` | Indexación en buscadores |
@@ -58,8 +58,9 @@ Es una web estática: sin dependencias, sin compilación y sin servidor. Se pued
 
 ### Antes de publicar
 
-1. **Rellenar `legal.html`.** Sustituir los datos entre corchetes por los reales y
-   borrar el bloque de aviso `<p class="todo">` (y su regla en `styles.css`).
+1. **Rellenar los textos legales.** En `aviso-legal.html` y `privacidad.html`,
+   sustituir los datos entre corchetes por los reales y borrar el bloque de aviso
+   `<p class="todo">` (y su regla en `styles.css`).
 2. **Poner el dominio real.** Buscar `TU-DOMINIO.es` y sustituirlo en las cuatro
    etiquetas del `<head>` de `index.html`, en `robots.txt` y en `sitemap.xml`.
    Sin esto la tarjeta de WhatsApp no muestra la imagen, porque Open Graph exige
