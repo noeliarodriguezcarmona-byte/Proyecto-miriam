@@ -500,6 +500,13 @@ fieldset { border: 0; }
   color: var(--accent);
 }
 .summary[data-state="error"] { color: var(--error); }
+.summary[data-state="sent"] {
+  font-style: normal;
+  font-family: var(--sans);
+  font-size: .92rem;
+  line-height: 1.5;
+  color: var(--accent);
+}
 
 .disclaimer {
   margin-top: 1rem;

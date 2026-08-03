@@ -113,10 +113,10 @@ function renderSlots() {
   });
 }
 
-function updateSummary(message) {
+function updateSummary(message, state_ = 'error') {
   if (message) {
     el.summary.textContent = message;
-    el.summary.dataset.state = 'error';
+    el.summary.dataset.state = state_;
     return;
   }
   el.summary.dataset.state = 'ok';
@@ -179,7 +179,15 @@ el.form.addEventListener('submit', (e) => {
     return;
   }
 
-  window.open(`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(buildMessage())}`, '_blank', 'noopener');
+  const url = `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(buildMessage())}`;
+
+  // Si el navegador bloquea la pestaña emergente, navegamos en la misma:
+  // más vale perder la página que perder la cita.
+  const ventana = window.open(url, '_blank', 'noopener');
+  if (!ventana || ventana.closed) { window.location.href = url; return; }
+
+  // La cita no le llega a Miriam hasta que se pulsa enviar dentro de WhatsApp.
+  updateSummary('Se ha abierto WhatsApp con tu cita. Pulsa enviar para que le llegue a Miriam.', 'sent');
 });
 
 REQUIRED.forEach(({ get }) => {
