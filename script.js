@@ -137,29 +137,37 @@ el.chips.addEventListener('click', (e) => {
 });
 
 function buildMessage() {
-  const lines = [
+  return [
     '¡Hola Miriam! Me gustaría reservar una cita 🌿',
     '',
     `• Sesión: ${state.service}`,
     `• Día: ${prettyDate(state.date)}`,
     `• Hora: ${state.time} h`,
     `• Nombre: ${el.name.value.trim()}`,
-  ];
-  const phone = el.phone.value.trim();
-  const notes = el.notes.value.trim();
-  if (phone) lines.push(`• Teléfono: ${phone}`);
-  if (notes) lines.push('', `Nota: ${notes}`);
-  lines.push('', '¿Me confirmas si te viene bien? ¡Gracias!');
-  return lines.join('\n');
+    `• Teléfono: ${el.phone.value.trim()}`,
+    '',
+    `Motivo: ${el.notes.value.trim()}`,
+    '',
+    '¿Me confirmas si te viene bien? ¡Gracias!',
+  ].join('\n');
 }
+
+/** Los tres campos hacen falta para que Miriam pueda preparar la sesión. */
+const REQUIRED = [
+  { get: () => el.name,  aviso: 'Escribe tu nombre para poder reservar' },
+  { get: () => el.phone, aviso: 'Escribe un teléfono de contacto para poder reservar' },
+  { get: () => el.notes, aviso: 'Cuéntale a Miriam el motivo de la sesión' },
+];
 
 el.form.addEventListener('submit', (e) => {
   e.preventDefault();
 
-  if (!el.name.value.trim()) {
-    el.name.setAttribute('aria-invalid', 'true');
-    el.name.focus();
-    updateSummary('Escribe tu nombre para poder reservar');
+  const falta = REQUIRED.find(({ get }) => !get().value.trim());
+  if (falta) {
+    const campo = falta.get();
+    campo.setAttribute('aria-invalid', 'true');
+    campo.focus();
+    updateSummary(falta.aviso);
     return;
   }
   if (!state.date || !state.time) { updateSummary(); return; }
@@ -174,9 +182,12 @@ el.form.addEventListener('submit', (e) => {
   window.open(`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(buildMessage())}`, '_blank', 'noopener');
 });
 
-el.name.addEventListener('input', () => {
-  el.name.removeAttribute('aria-invalid');
-  if (el.summary.dataset.state === 'error') updateSummary();
+REQUIRED.forEach(({ get }) => {
+  const campo = get();
+  campo.addEventListener('input', () => {
+    campo.removeAttribute('aria-invalid');
+    if (el.summary.dataset.state === 'error') updateSummary();
+  });
 });
 
 el.consent.addEventListener('change', () => {
