@@ -19,6 +19,11 @@ automáticamente.
 
 Lunes a viernes · 9:00–13:00 y 15:00–19:00 · franjas de 30 minutos.
 
+## Tema claro y oscuro
+
+La paleta está definida como variables CSS en `:root` y se redefine para modo oscuro.
+La página se adapta sola a la preferencia del dispositivo.
+
 ## Archivos
 
 | Archivo | Contenido |
