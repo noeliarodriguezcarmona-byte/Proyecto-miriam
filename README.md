@@ -28,9 +28,13 @@ La página se adapta sola a la preferencia del dispositivo.
 
 | Archivo | Contenido |
 |---|---|
-| `index.html` | Estructura de la página y la ilustración de chakras (SVG) |
-| `styles.css` | Paleta, tipografías y todo el diseño |
-| `script.js`  | Calendario, franjas horarias y generación del mensaje de WhatsApp |
+| `index.html`   | Estructura de la página y la ilustración de chakras (SVG) |
+| `styles.css`   | Paleta, tipografías y todo el diseño |
+| `script.js`    | Calendario, franjas horarias y generación del mensaje de WhatsApp |
+| `legal.html`   | Aviso legal, política de privacidad y de cookies |
+| `404.html`     | Página de error |
+| `og-image.png` | Imagen que se ve al compartir el enlace (1200 × 630) |
+| `robots.txt` · `sitemap.xml` | Indexación en buscadores |
 
 ## Ajustes rápidos
 
@@ -49,5 +53,27 @@ Los tres servicios se editan en `index.html`: en las tarjetas de la sección
 
 ## Publicar
 
-Es una web estática, sin dependencias ni compilación. Basta con abrir `index.html`
-o subir la carpeta a cualquier hosting (GitHub Pages, Netlify, Vercel…).
+Es una web estática: sin dependencias, sin compilación y sin servidor. Se puede abrir
+`index.html` directamente o servir la carpeta desde cualquier hosting estático.
+
+### Antes de publicar
+
+1. **Rellenar `legal.html`.** Sustituir los datos entre corchetes por los reales y
+   borrar el bloque de aviso `<p class="todo">` (y su regla en `styles.css`).
+2. **Poner el dominio real.** Buscar `TU-DOMINIO.es` y sustituirlo en las cuatro
+   etiquetas del `<head>` de `index.html`, en `robots.txt` y en `sitemap.xml`.
+   Sin esto la tarjeta de WhatsApp no muestra la imagen, porque Open Graph exige
+   URL absolutas.
+3. **Revisar los servicios y las duraciones** en `index.html` (tarjetas de
+   `#servicios` y atributos `data-service` del paso 1).
+
+### Desplegar en Cloudflare Pages
+
+1. Entrar en [dash.cloudflare.com](https://dash.cloudflare.com) → *Workers & Pages*
+   → *Create* → *Pages* → *Connect to Git*.
+2. Elegir este repositorio.
+3. Framework preset: **None**. Build command: **vacío**. Output directory: **`/`**.
+4. *Save and Deploy*. Queda publicada en una dirección `.pages.dev`.
+5. Para el dominio propio: pestaña *Custom domains* → *Set up a domain*.
+
+Cada push a la rama de producción vuelve a desplegar automáticamente.

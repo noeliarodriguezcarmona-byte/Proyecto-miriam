@@ -21,6 +21,7 @@ const el = {
   name:    document.getElementById('name'),
   phone:   document.getElementById('phone'),
   notes:   document.getElementById('notes'),
+  consent: document.getElementById('consent'),
 };
 
 const state = { service: 'Quiromasaje terapéutico (60 min)', date: null, time: null };
@@ -163,11 +164,23 @@ el.form.addEventListener('submit', (e) => {
   }
   if (!state.date || !state.time) { updateSummary(); return; }
 
+  if (!el.consent.checked) {
+    el.consent.parentElement.dataset.invalid = 'true';
+    el.consent.focus();
+    updateSummary('Acepta la política de privacidad para poder reservar');
+    return;
+  }
+
   window.open(`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(buildMessage())}`, '_blank', 'noopener');
 });
 
 el.name.addEventListener('input', () => {
   el.name.removeAttribute('aria-invalid');
+  if (el.summary.dataset.state === 'error') updateSummary();
+});
+
+el.consent.addEventListener('change', () => {
+  delete el.consent.parentElement.dataset.invalid;
   if (el.summary.dataset.state === 'error') updateSummary();
 });
 
