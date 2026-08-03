@@ -725,6 +725,27 @@ h3 {
 }
 .lista li:hover { border-color: var(--naranja); transform: translateY(-2px); }
 
+/* Las etiquetas entran escalonadas cuando el servicio asoma.
+   El relleno va en «backwards»: sujeta el estado inicial antes de empezar,
+   pero al terminar suelta el elemento. Con «both» se quedaría clavado el
+   transform final y el levantamiento del hover dejaría de funcionar. */
+.servicio__txt.visible .lista li {
+  animation: entrarEtiqueta .5s cubic-bezier(.22, .61, .36, 1) backwards;
+}
+.lista li:nth-child(1) { animation-delay: .30s; }
+.lista li:nth-child(2) { animation-delay: .38s; }
+.lista li:nth-child(3) { animation-delay: .46s; }
+.lista li:nth-child(4) { animation-delay: .54s; }
+.lista li:nth-child(5) { animation-delay: .62s; }
+.lista li:nth-child(6) { animation-delay: .70s; }
+.lista li:nth-child(7) { animation-delay: .78s; }
+.lista li:nth-child(8) { animation-delay: .86s; }
+
+@keyframes entrarEtiqueta {
+  from { opacity: 0; transform: translateY(10px) scale(.96); }
+  to   { opacity: 1; transform: none; }
+}
+
 /* Icono de cada servicio */
 .servicio__icono {
   width: 44px;

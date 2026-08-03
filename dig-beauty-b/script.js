@@ -14,6 +14,7 @@ const $$ = (s, c = document) => [...c.querySelectorAll(s)];
 
 const whatsapp = () => localStorage.getItem(K_WA) || WHATSAPP_DEFECTO;
 const sinRuido = () => matchMedia('(prefers-reduced-motion: reduce)').matches;
+const sinMovimiento = sinRuido;   // mismo criterio, nombre que usa el contador
 
 /* ---------------------------------------------------------
    Entrada al bajar
@@ -103,6 +104,66 @@ function fotos() {
 function irAlMapa() {
   const direccion = $('[data-txt="lugar.direccion"]').textContent.trim();
   $('#ir-mapa').href = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(direccion)}`;
+}
+
+/* ---------------------------------------------------------
+   Cifras que cuentan al asomar
+   --------------------------------------------------------- */
+
+/** Separa "+10", "5,0" o "10+" en lo que va delante, el número y lo que va
+    detrás, para poder contar solo la parte numérica y devolver el texto igual. */
+function partirCifra(texto) {
+  const m = texto.match(/^(\D*)(\d+(?:[.,]\d+)?)(\D*)$/);
+  if (!m) return null;
+  const [, antes, numero, despues] = m;
+  const decimales = (numero.split(/[.,]/)[1] || '').length;
+  return {
+    antes, despues, decimales,
+    separador: numero.includes(',') ? ',' : '.',
+    valor: parseFloat(numero.replace(',', '.')),
+  };
+}
+
+function contarCifras(selector) {
+  const cifras = $$(selector);
+  if (!cifras.length) return;
+
+  const pintar = (el, p, valor) => {
+    const n = p.decimales
+      ? valor.toFixed(p.decimales).replace('.', p.separador)
+      : String(Math.round(valor));
+    el.textContent = p.antes + n + p.despues;
+  };
+
+  const contar = (el) => {
+    const p = partirCifra(el.textContent.trim());
+    if (!p || p.valor === 0) return;
+
+    if (sinMovimiento()) { pintar(el, p, p.valor); return; }
+
+    const DURACION = 1400;
+    const arranque = performance.now();
+
+    const paso = (ahora) => {
+      const t = Math.min(1, (ahora - arranque) / DURACION);
+      // frenada suave al final, para que el número se asiente
+      pintar(el, p, p.valor * (1 - Math.pow(1 - t, 3)));
+      if (t < 1) requestAnimationFrame(paso);
+    };
+    requestAnimationFrame(paso);
+  };
+
+  if (!('IntersectionObserver' in window)) { cifras.forEach(contar); return; }
+
+  const obs = new IntersectionObserver((filas) => {
+    filas.forEach((fila) => {
+      if (!fila.isIntersecting) return;
+      contar(fila.target);
+      obs.unobserve(fila.target);
+    });
+  }, { threshold: .6 });
+
+  cifras.forEach((c) => obs.observe(c));
 }
 
 /* ---------------------------------------------------------
@@ -349,3 +410,4 @@ valoraciones();
 formulario();
 panel();
 entradas();
+contarCifras('.tira__dato b');
