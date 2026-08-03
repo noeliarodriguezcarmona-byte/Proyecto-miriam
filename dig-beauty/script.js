@@ -121,6 +121,7 @@ function formularioWhatsApp() {
     { el: $('#f-telefono'), texto: 'Necesitamos un teléfono de contacto' },
     { el: $('#f-mensaje'),  texto: 'Cuéntanos brevemente qué necesitas' },
   ];
+  const consiento = $('#f-consiento');
 
   const decir = (texto, estado) => {
     aviso.textContent = texto;
@@ -148,6 +149,13 @@ function formularioWhatsApp() {
       return;
     }
 
+    if (consiento && !consiento.checked) {
+      consiento.parentElement.dataset.invalido = 'true';
+      consiento.focus();
+      decir('Acepta la política de privacidad para poder enviarlo', 'error');
+      return;
+    }
+
     const url = `https://wa.me/${whatsapp()}?text=${encodeURIComponent(mensaje())}`;
 
     // Si el navegador bloquea la pestaña, navegamos en la misma: más vale
@@ -162,6 +170,11 @@ function formularioWhatsApp() {
     el.removeAttribute('aria-invalid');
     if (aviso.dataset.estado === 'error') decir('', 'ok');
   }));
+
+  consiento?.addEventListener('change', () => {
+    delete consiento.parentElement.dataset.invalido;
+    if (aviso.dataset.estado === 'error') decir('', 'ok');
+  });
 }
 
 /** Si una foto no está todavía, se enseña su marco de cortesía en vez del
