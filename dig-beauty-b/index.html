@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DIG Beauty · Centro de estética y cosmética</title>
+  <meta name="description" content="Centro de estética DIG Beauty: tratamientos faciales, masajes, depilación, estética avanzada y cosmética seleccionada. Pide cita por WhatsApp.">
+  <meta name="theme-color" content="#17120f">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 64 64%27><rect width=%2764%27 height=%2764%27 fill=%27%2317120f%27/><text x=%2732%27 y=%2745%27 font-size=%2738%27 font-family=%27Didot,Georgia,serif%27 fill=%27%23ff7a2f%27 text-anchor=%27middle%27>D</text></svg>">
+</head>
+<body>
+
+  <p class="aviso-muestra" id="aviso-muestra">
+    <b>Contenido de ejemplo.</b> Las valoraciones y la dirección son de muestra.
+    <button type="button" class="aviso-muestra__x" data-cerrar-aviso aria-label="Ocultar">×</button>
+  </p>
+
+  <!-- ============ CABECERA ============ -->
+  <header class="barra" id="barra">
+    <a class="logo" href="#portada">DIG<span>Beauty</span></a>
+
+    <nav class="nav" aria-label="Secciones">
+      <a href="#servicios">Servicios</a>
+      <a href="#noelia">Nosotras</a>
+      <a href="#opiniones">Opiniones</a>
+      <a href="#lugar">Dónde</a>
+    </nav>
+
+    <a href="#contacto" class="cta">Pedir cita</a>
+
+    <button class="hamburguesa" aria-expanded="false" aria-controls="nav-movil" aria-label="Abrir menú">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+
+  <nav class="nav-movil" id="nav-movil" hidden aria-label="Menú">
+    <a href="#servicios">Servicios</a>
+    <a href="#noelia">Nosotras</a>
+    <a href="#opiniones">Opiniones</a>
+    <a href="#lugar">Dónde estamos</a>
+    <a href="#contacto">Pedir cita</a>
+  </nav>
+
+  <!-- ============ PORTADA ============ -->
+  <section class="portada" id="portada">
+    <div class="portada__txt">
+      <p class="pico entra" data-txt="portada.pico">Centro de estética · Cosmética profesional</p>
+      <h1 class="entra" data-txt="portada.titulo">La piel<em>cuidada</em>con criterio</h1>
+      <p class="sumario entra" data-txt="portada.sumario">
+        Diagnóstico primero, producto después. Más de diez años tratando pieles
+        concretas, no catálogos.
+      </p>
+      <div class="portada__botones entra">
+        <a href="#contacto" class="cta cta--grande">Pedir cita</a>
+        <a href="#servicios" class="subrayado">Ver los tratamientos</a>
+      </div>
+    </div>
+
+    <div class="portada__foto entra">
+      <img src="noeliacorporativa.jpg" width="1067" height="1600"
+           alt="Noelia Carmona, fundadora de DIG Beauty">
+      <span class="portada__marco" aria-hidden="true"></span>
+    </div>
+  </section>
+
+  <!-- ============ CIFRAS ============ -->
+  <section class="tira">
+    <div class="tira__dato entra"><b data-txt="tira.1n">10+</b><span data-txt="tira.1t">años de oficio</span></div>
+    <div class="tira__dato entra"><b data-txt="tira.2n">5+</b><span data-txt="tira.2t">especialistas</span></div>
+    <div class="tira__dato entra"><b data-txt="tira.3n">5,0</b><span data-txt="tira.3t">de valoración media</span></div>
+    <div class="tira__dato entra"><b data-txt="tira.4n">0</b><span data-txt="tira.4t">ventas que no necesites</span></div>
+  </section>
+
+  <!-- ============ SERVICIOS ============ -->
+  <section class="servicios" id="servicios">
+    <header class="cabeza entra">
+      <p class="pico" data-txt="servicios.pico">Qué hacemos</p>
+      <h2 data-txt="servicios.titulo">Tratamientos</h2>
+      <p class="sumario" data-txt="servicios.sumario">
+        Cinco áreas. Cada una con su especialista, su aparatología y su protocolo.
+        Despliega la que te interese.
+      </p>
+    </header>
+
+    <div class="indice">
+
+      <details class="ficha entra" name="servicio" open>
+        <summary>
+          <span class="ficha__nombre" data-txt="s1.nombre">Estética avanzada</span>
+          <span class="ficha__mas" aria-hidden="true"></span>
+        </summary>
+        <div class="ficha__cuerpo">
+          <p data-txt="s1.texto">
+            Aparatología para lo que la cosmética sola no alcanza: flacidez, manchas,
+            textura irregular y rojeces persistentes.
+          </p>
+          <ul data-txt-lista="s1.lista">
+            <li>Radiofrecuencia facial y corporal</li>
+            <li>Presoterapia</li>
+            <li>Peelings químicos</li>
+            <li>Tratamiento de manchas</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="ficha entra" name="servicio">
+        <summary>
+          <span class="ficha__nombre" data-txt="s2.nombre">Tratamientos faciales</span>
+          <span class="ficha__mas" aria-hidden="true"></span>
+        </summary>
+        <div class="ficha__cuerpo">
+          <p data-txt="s2.texto">
+            Higiene profunda, hidratación y luminosidad. El tratamiento base sobre el
+            que se construye todo lo demás.
+          </p>
+          <ul data-txt-lista="s2.lista">
+            <li>Limpieza profunda</li>
+            <li>Hidratación intensiva</li>
+            <li>Antiedad y firmeza</li>
+            <li>Pieles sensibles y con rosácea</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="ficha entra" name="servicio">
+        <summary>
+          <span class="ficha__nombre" data-txt="s3.nombre">Masajes</span>
+          <span class="ficha__mas" aria-hidden="true"></span>
+        </summary>
+        <div class="ficha__cuerpo">
+          <p data-txt="s3.texto">
+            Trabajo manual sobre la tensión que se acumula en cuello, espalda y
+            mandíbula. Sesiones de 30 o 60 minutos.
+          </p>
+          <ul data-txt-lista="s3.lista">
+            <li>Relajante y descontracturante</li>
+            <li>Drenaje linfático manual</li>
+            <li>Masaje facial kobido</li>
+            <li>Piernas cansadas</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="ficha entra" name="servicio">
+        <summary>
+          <span class="ficha__nombre" data-txt="s4.nombre">Depilación</span>
+          <span class="ficha__mas" aria-hidden="true"></span>
+        </summary>
+        <div class="ficha__cuerpo">
+          <p data-txt="s4.texto">
+            Con cera tibia de baja temperatura o con láser diodo, según la zona, el
+            tono de piel y lo que busques a largo plazo.
+          </p>
+          <ul data-txt-lista="s4.lista">
+            <li>Cera tibia y cera de azúcar</li>
+            <li>Láser diodo</li>
+            <li>Zonas faciales y diseño de cejas</li>
+            <li>Bonos de sesiones</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="ficha entra" name="servicio">
+        <summary>
+          <span class="ficha__nombre" data-txt="s5.nombre">Productos</span>
+          <span class="ficha__mas" aria-hidden="true"></span>
+        </summary>
+        <div class="ficha__cuerpo">
+          <p data-txt="s5.texto">
+            Cosmética profesional seleccionada una a una. Te explicamos qué hace cada
+            activo y en qué orden se aplica, para que la rutina la puedas sostener.
+          </p>
+          <ul data-txt-lista="s5.lista">
+            <li>Limpiadores y tónicos</li>
+            <li>Sérums con activos específicos</li>
+            <li>Protección solar diaria</li>
+            <li>Rutinas personalizadas</li>
+          </ul>
+        </div>
+      </details>
+
+    </div>
+  </section>
+
+  <!-- ============ NOELIA ============ -->
+  <section class="noelia" id="noelia">
+    <div class="noelia__foto entra">
+      <img src="noeliacorporativa.jpg" width="1067" height="1600"
+           alt="Retrato de Noelia Carmona">
+    </div>
+
+    <div class="noelia__txt">
+      <p class="pico entra" data-txt="noelia.pico">Esto es DIG</p>
+      <h2 class="entra" data-txt="noelia.titulo">Noelia Carmona</h2>
+      <p class="noelia__cargo entra" data-txt="noelia.cargo">Fundadora y socia</p>
+
+      <p class="sumario entra" data-txt="noelia.texto">
+        DIG Beauty nace de una década larga dedicada a la estética y a los tratamientos
+        estéticos. Ese tiempo es lo que permite mirar una piel y saber qué necesita de
+        verdad. Hoy somos más de cinco profesionales, cada una especializada en su área.
+      </p>
+
+      <ul class="credenciales entra" data-txt-lista="noelia.titulaciones">
+        <li>Graduada en Cosmética</li>
+        <li>Especialista en Estética</li>
+        <li>Máster en Estética Integral y Bienestar</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ OPINIONES ============ -->
+  <section class="opiniones" id="opiniones">
+    <p class="pico entra" data-txt="opiniones.pico">Valoraciones</p>
+
+    <div class="cita-grande entra">
+      <div class="cita-grande__estrellas" aria-hidden="true">★★★★★</div>
+
+      <blockquote class="testimonio" data-activo="0">
+        <p data-txt="op1.texto">Llevaba años probando cremas por mi cuenta sin saber lo que hacía. Aquí me explicaron mi piel en veinte minutos y por fin tengo una rutina que entiendo.</p>
+        <footer><b data-txt="op1.autora">María G.</b> · <span data-txt="op1.detalle">Tratamiento facial, junio 2026</span></footer>
+      </blockquote>
+      <blockquote class="testimonio">
+        <p data-txt="op2.texto">Voy por los masajes de espalda y salgo como nueva. Trato cercano y mucha puntualidad, que para mí es fundamental.</p>
+        <footer><b data-txt="op2.autora">Carmen R.</b> · <span data-txt="op2.detalle">Masaje descontracturante, mayo 2026</span></footer>
+      </blockquote>
+      <blockquote class="testimonio">
+        <p data-txt="op3.texto">Me gustó que no intentaran venderme el tratamiento más caro. Me dijeron directamente lo que necesitaba y lo que no.</p>
+        <footer><b data-txt="op3.autora">Laura M.</b> · <span data-txt="op3.detalle">Asesoramiento de rutina, mayo 2026</span></footer>
+      </blockquote>
+      <blockquote class="testimonio">
+        <p data-txt="op4.texto">Me hago la depilación láser aquí desde hace un año. Van explicando sesión a sesión cómo va la zona, sin prometerte milagros el primer día.</p>
+        <footer><b data-txt="op4.autora">Sara P.</b> · <span data-txt="op4.detalle">Depilación láser, abril 2026</span></footer>
+      </blockquote>
+      <blockquote class="testimonio">
+        <p data-txt="op5.texto">Vine con la piel fatal después del verano y en tres sesiones se notó. Salgo con la sensación de que saben lo que están haciendo.</p>
+        <footer><b data-txt="op5.autora">Ana V.</b> · <span data-txt="op5.detalle">Estética avanzada, abril 2026</span></footer>
+      </blockquote>
+
+      <div class="mando">
+        <button type="button" class="mando__flecha" id="anterior" aria-label="Valoración anterior">←</button>
+        <div class="mando__puntos" id="puntos" role="tablist" aria-label="Valoraciones"></div>
+        <button type="button" class="mando__flecha" id="siguiente" aria-label="Valoración siguiente">→</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ DÓNDE ============ -->
+  <section class="lugar" id="lugar">
+    <div class="lugar__txt entra">
+      <p class="pico" data-txt="lugar.pico">Dónde estamos</p>
+      <h2 data-txt="lugar.titulo">Ven a vernos</h2>
+      <p class="sumario" data-txt="lugar.sumario">
+        En pleno centro, a dos minutos de la parada de autobús. Se atiende con cita previa.
+      </p>
+
+      <dl class="ficha-datos">
+        <dt>Dirección</dt><dd data-txt="lugar.direccion">[Calle y número], [Código postal] [Ciudad]</dd>
+        <dt>Horario</dt><dd data-txt="lugar.horario">Lunes a viernes, 10:00 – 20:00 · Sábados, 10:00 – 14:00</dd>
+        <dt>Teléfono</dt><dd data-txt="lugar.telefono">620 00 44 34</dd>
+        <dt>Correo</dt><dd data-txt="lugar.correo">[correo de contacto]</dd>
+      </dl>
+
+      <a class="subrayado" id="ir-mapa" href="#" target="_blank" rel="noopener">Abrir en el mapa</a>
+    </div>
+
+    <div class="lugar__plano entra" aria-hidden="true"><i></i></div>
+  </section>
+
+  <!-- ============ CONTACTO ============ -->
+  <section class="contacto" id="contacto">
+    <header class="cabeza entra">
+      <p class="pico" data-txt="contacto.pico">Contacto</p>
+      <h2 data-txt="contacto.titulo">Escríbenos por WhatsApp</h2>
+      <p class="sumario" data-txt="contacto.sumario">
+        Rellena lo que necesites y se abrirá WhatsApp con el mensaje ya escrito.
+      </p>
+    </header>
+
+    <form class="hoja entra" id="hoja" novalidate>
+      <div class="hoja__campos">
+        <label class="linea">
+          <span>Nombre</span>
+          <input type="text" id="c-nombre" autocomplete="name" placeholder="Tu nombre" required>
+        </label>
+        <label class="linea">
+          <span>Teléfono</span>
+          <input type="tel" id="c-telefono" autocomplete="tel" placeholder="600 00 00 00" required>
+        </label>
+        <label class="linea linea--ancha">
+          <span>Qué te interesa</span>
+          <select id="c-servicio">
+            <option>Estética avanzada</option>
+            <option>Tratamientos faciales</option>
+            <option>Masajes</option>
+            <option>Depilación</option>
+            <option>Productos y asesoramiento</option>
+            <option>Otra cosa</option>
+          </select>
+        </label>
+        <label class="linea linea--ancha">
+          <span>Cuéntanos</span>
+          <textarea id="c-mensaje" rows="3" placeholder="Qué necesitas y cuándo te vendría bien" required></textarea>
+        </label>
+      </div>
+
+      <p class="respuesta" id="respuesta" aria-live="polite"></p>
+
+      <button type="submit" class="cta cta--grande cta--ancha" id="enviar">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2Zm5.8 14.16c-.24.68-1.42 1.31-1.96 1.36-.5.05-1.13.07-1.82-.11-.42-.11-.96-.29-1.65-.59-2.9-1.25-4.8-4.17-4.94-4.36-.15-.19-1.19-1.58-1.19-3.02s.76-2.15 1.03-2.44c.27-.29.59-.37.79-.37h.57c.18 0 .43-.07.67.51.24.59.83 2.03.9 2.18.07.15.12.32.02.51-.1.19-.15.31-.29.48-.15.17-.31.38-.44.51-.15.15-.3.31-.13.6.17.29.76 1.25 1.63 2.03 1.12 1 2.06 1.3 2.35 1.45.29.15.46.12.63-.07.17-.19.73-.85.92-1.14.19-.29.39-.24.65-.15.27.1 1.7.8 1.99.95.29.15.48.22.55.34.07.12.07.68-.17 1.36Z"/></svg>
+        Enviar por WhatsApp
+      </button>
+    </form>
+  </section>
+
+  <!-- ============ PIE ============ -->
+  <footer class="pie">
+    <a class="logo logo--pie" href="#portada">DIG<span>Beauty</span></a>
+    <p class="pie__lema" data-txt="pie.lema">Cosmética con criterio.</p>
+    <nav class="pie__nav" aria-label="Pie">
+      <a href="#servicios">Servicios</a>
+      <a href="#noelia">Nosotras</a>
+      <a href="#opiniones">Opiniones</a>
+      <a href="#lugar">Dónde estamos</a>
+      <a href="#contacto">Pedir cita</a>
+    </nav>
+    <p class="pie__firma">Designed by <b>differentissgood</b> <span aria-label="5 estrellas">★★★★★</span></p>
+  </footer>
+
+  <!-- ============ PANEL ============ -->
+  <button class="editar" id="editar" aria-expanded="false" aria-controls="panel">Editar textos</button>
+
+  <aside class="panel" id="panel" hidden aria-label="Editor de textos">
+    <header>
+      <h2>Editar textos</h2>
+      <button type="button" id="cerrar-panel" aria-label="Cerrar">×</button>
+    </header>
+    <p class="panel__nota">
+      Los cambios se aplican al momento y se guardan en este navegador.
+      Descárgalos y pásamelos para dejarlos fijos.
+    </p>
+    <div class="panel__wa">
+      <label class="linea">
+        <span>Número de WhatsApp</span>
+        <input type="tel" id="wa" placeholder="34600000000">
+      </label>
+    </div>
+    <div class="panel__lista" id="panel-lista"></div>
+    <footer>
+      <button type="button" class="cta" id="descargar">Descargar</button>
+      <button type="button" class="cta cta--hueca" id="restaurar">Restaurar</button>
+    </footer>
+  </aside>
+
+  <script src="script.js"></script>
+</body>
+</html>
