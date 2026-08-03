@@ -340,10 +340,29 @@ h1 em {
 /* ---------- servicios ---------- */
 
 .servicios {
+  position: relative;
+  isolation: isolate;
   max-width: var(--ancho);
   margin: 0 auto;
   padding: var(--aire) clamp(1.2rem, 5vw, 3.5rem);
 }
+
+/* La foto de cabina, a sangre por detrás del bloque, con un velo oscuro
+   encima para que el texto siga leyéndose. */
+.servicios::before {
+  content: "";
+  position: absolute;
+  inset: 0 calc(50% - 50vw);
+  z-index: -1;
+  background:
+    linear-gradient(color-mix(in srgb, var(--negro) 80%, transparent),
+                    color-mix(in srgb, var(--negro) 86%, transparent)),
+    url("tratamientos.jpg") center 30% / cover no-repeat;
+}
+
+/* Sobre la foto el secundario baja a 3,50 de contraste en el peor caso.
+   Se aclara solo aquí: 5,22 aunque la foto sea blanca. */
+.servicios { --hueso-2: #c9b8ab; }
 
 .indice { border-top: 1px solid var(--linea); }
 

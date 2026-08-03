@@ -607,7 +607,29 @@ h3 {
 
 /* ---------- servicios ---------- */
 
-.servicios { display: flex; flex-direction: column; }
+.servicios {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  flex-direction: column;
+}
+
+/* La foto de cabina va detrás de todo el bloque, con un lavado del color de
+   la página encima: se reconoce la escena sin comerse la legibilidad. */
+.servicios::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(color-mix(in srgb, var(--fondo) 84%, transparent),
+                    color-mix(in srgb, var(--fondo) 88%, transparent)),
+    url("tratamientos.jpg") center 25% / cover no-repeat;
+}
+
+/* Sobre la foto, el secundario de la paleta se queda en 2,97 de contraste
+   en el peor caso. Se oscurece solo aquí: 4,54 aunque la foto sea negra. */
+.servicios { --tinta-suave: #6b564b; }
 
 .servicio {
   position: relative;
