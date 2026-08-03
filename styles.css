@@ -20,6 +20,7 @@
   --cool-deep:   #4d8ba3;   /* relleno azul agua */
   --cool-ink:    #ffffff;
   --error:       #b8615f;
+  --orange:      #a8480f;   /* firma de autoría */
 
   --aura-1: rgba(127,182,201,.20);
   --aura-2: rgba(94,156,147,.18);
@@ -53,6 +54,7 @@
     --cool-deep:   #8cc2d3;
     --cool-ink:    #102127;
     --error:       #e2908d;
+    --orange:      #f2a877;
 
     --aura-1: rgba(127,182,201,.13);
     --aura-2: rgba(94,156,147,.13);
@@ -73,7 +75,7 @@
   --text:#e4ece9; --text-soft:#9db1ac;
   --line:rgba(124,184,174,.20); --line-strong:rgba(124,184,174,.38);
   --sage:#7cb8ae; --accent:#8fcabf; --accent-ink:#10201d;
-  --cool:#8cc2d3; --cool-deep:#8cc2d3; --cool-ink:#102127; --error:#e2908d;
+  --cool:#8cc2d3; --cool-deep:#8cc2d3; --cool-ink:#102127; --error:#e2908d; --orange:#f2a877;
   --aura-1:rgba(127,182,201,.13); --aura-2:rgba(94,156,147,.13); --aura-3:rgba(201,183,121,.07);
   --halo-op:.16; --core-op:.6; --seed-op:.85;
   --shadow:0 30px 70px -50px rgba(0,0,0,.9);
@@ -84,7 +86,7 @@
   --text:#2c3a3a; --text-soft:#5d6d6b;
   --line:rgba(94,156,147,.22); --line-strong:rgba(94,156,147,.42);
   --sage:#5e9c93; --accent:#3f7169; --accent-ink:#ffffff;
-  --cool:#7fb6c9; --cool-deep:#4d8ba3; --cool-ink:#ffffff; --error:#b8615f;
+  --cool:#7fb6c9; --cool-deep:#4d8ba3; --cool-ink:#ffffff; --error:#b8615f; --orange:#a8480f;
   --aura-1:rgba(127,182,201,.20); --aura-2:rgba(94,156,147,.18); --aura-3:rgba(201,183,121,.14);
   --halo-op:.12; --core-op:.55; --seed-op:.75;
   --shadow:0 30px 70px -50px rgba(44,58,58,.6);
@@ -561,6 +563,14 @@ fieldset { border: 0; }
   html { scroll-behavior: auto; }
   * { animation: none !important; transition-duration: .01ms !important; }
 }
+
+.footer__author {
+  font-size: .72rem;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--orange);
+}
+.footer__author b { font-weight: 500; letter-spacing: .12em; }
 
 .footer__legal { font-size: .78rem; color: var(--text-soft); }
 .footer__legal a { color: inherit; text-decoration: none; border-bottom: 1px solid var(--line); }
