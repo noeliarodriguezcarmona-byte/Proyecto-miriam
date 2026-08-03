@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://TU-DOMINIO.es/sitemap.xml
+Sitemap: https://noeliarodriguezcarmona-byte.github.io/Proyecto-miriam/sitemap.xml
