@@ -16,14 +16,10 @@ const $$ = (s, c = document) => [...c.querySelectorAll(s)];
    La galería y la plantilla de Historias leen esta misma lista.
    --------------------------------------------------------- */
 
-const FOTOS_GALERIA = [
-  'boda-01.jpg', 'boda-02.jpg', 'boda-03.jpg', 'boda-04.jpg',
-  'boda-05.jpg', 'boda-06.jpg', 'boda-07.jpg', 'boda-08.jpg',
-  'boda-09.jpg', 'boda-10.jpg', 'boda-11.jpg', 'boda-12.jpg',
-];
+const FOTOS_GALERIA = Array.from({ length: 59 }, (_, i) => `boda-${String(i + 1).padStart(2, '0')}.jpg`);
 
 // Índices (empezando en 0) de las fotos que ocupan doble ancho en la cuadrícula.
-const FOTOS_ANCHAS = [2, 7];
+const FOTOS_ANCHAS = [2, 11, 20, 29, 38, 47, 56];
 
 const VIDEOS_GALERIA = [
   { archivo: 'boda-01.mp4', titulo: 'Laura & Marcos · Highlight' },
