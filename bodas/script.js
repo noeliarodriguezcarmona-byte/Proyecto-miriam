@@ -4,7 +4,7 @@
    formulario a WhatsApp · compartir enlace
    ========================================================= */
 
-const WHATSAPP_POR_DEFECTO = '34600000000';   // cambia esto por el número real
+const WHATSAPP_POR_DEFECTO = '34620004434';   // cambia esto por el número real
 const CLAVE_AVISO = 'differentissgood-bodas:aviso-oculto';
 
 const $  = (s, c = document) => c.querySelector(s);
