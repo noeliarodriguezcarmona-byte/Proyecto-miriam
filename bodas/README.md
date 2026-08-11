@@ -27,14 +27,13 @@ dron, fotos de grupo y retratos individuales para álbum.
    sustituir los datos entre corchetes por los reales y borrar el bloque de
    aviso `<p class="todo">` (y su regla en `styles.css`).
 4. **Poner el dominio real** en las etiquetas Open Graph de `<head>` de
-   `index.html` (busca `noeliarodriguezcarmona-byte.github.io`), y en
-   `historia.html` si la publicas aparte.
+   `index.html` (busca `differentissgood.com`, ahora mismo es un dominio
+   provisional), y en `historia.html` si la publicas aparte.
 5. **Sustituir las opiniones y nombres de ejemplo** de `index.html` por
    testimonios reales de parejas (con su permiso).
 
 ## Publicar
 
-Es una web estática: sin dependencias, sin compilación y sin servidor.
-Sigue el mismo patrón que `dig-beauty/` en este repositorio — se puede abrir
-`index.html` directamente o servir la carpeta desde GitHub Pages o
-Cloudflare Pages.
+Es una web estática: sin dependencias, sin compilación y sin servidor. Se
+puede abrir `index.html` directamente o servir esta carpeta desde cualquier
+hosting estático (GitHub Pages, Cloudflare Pages, Netlify...).
