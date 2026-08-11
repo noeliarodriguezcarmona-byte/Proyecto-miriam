@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Plantilla para Historias · Differentissgood Bodas</title>
+  <meta name="robots" content="noindex, follow">
+  <meta name="theme-color" content="#1b1611">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Estilos propios de esta plantilla: no afectan al resto de la web */
+    body.captura .barra,
+    body.captura .instrucciones { display: none !important; }
+    body.captura { background: #000; }
+
+    .barra {
+      position: sticky; top: 0; z-index: 30; display: flex; align-items: center; justify-content: space-between;
+      gap: 12px; padding: 14px 20px; background: var(--fondo); border-bottom: 1px solid var(--borde); flex-wrap: wrap;
+    }
+    .barra__grupo { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+    .barra select, .barra input[type="text"] {
+      font: inherit; padding: 8px 10px; border-radius: 8px; border: 1px solid var(--borde);
+      background: var(--superficie); color: var(--texto);
+    }
+
+    .escenario {
+      display: flex; justify-content: center; padding: 32px 16px 60px; background: var(--fondo-2);
+      min-height: calc(100vh - 64px);
+    }
+
+    /* La historia real: exactamente 1080x1920, reducida en pantalla con zoom
+       para que quepa, pero al hacer captura del elemento (o imprimir) sale
+       al tamaño real. */
+    .historia {
+      position: relative; width: 1080px; height: 1920px; overflow: hidden;
+      background: #111; color: #fff; flex-shrink: 0;
+      zoom: .32;
+    }
+    @media (max-width: 480px) { .historia { zoom: .26; } }
+
+    .historia__foto { position: absolute; inset: 0; }
+    .historia__foto img { width: 100%; height: 100%; object-fit: cover; }
+    .historia__foto::after {
+      content: ""; position: absolute; inset: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,.55) 0%, rgba(0,0,0,0) 22%, rgba(0,0,0,0) 62%, rgba(0,0,0,.75) 100%);
+    }
+
+    .historia__marca {
+      position: absolute; top: 90px; left: 0; right: 0; display: flex; align-items: center;
+      justify-content: center; gap: 16px; font-family: var(--serif); font-size: 40px; letter-spacing: .04em;
+    }
+    .historia__marca .circ {
+      width: 64px; height: 64px; border-radius: 50%; border: 2px solid #cba36c; display: grid; place-items: center;
+      font-size: 34px; color: #cba36c;
+    }
+
+    .historia__pie { position: absolute; left: 80px; right: 80px; bottom: 130px; text-align: center; }
+    .historia__nombres {
+      font-family: var(--serif); font-size: 84px; margin: 0 0 18px; line-height: 1.05;
+    }
+    .historia__fecha { font-size: 34px; letter-spacing: .08em; text-transform: uppercase; color: #cba36c; margin: 0 0 44px; }
+    .historia__cta {
+      display: inline-block; border: 2px solid #fff; border-radius: 999px; padding: 22px 52px; font-size: 32px;
+    }
+    .historia__flecha { margin-top: 30px; font-size: 30px; opacity: .85; }
+
+    .historia .hueco {
+      background: #26201b; color: #d8ccbb;
+    }
+    .historia .hueco svg { width: 90px; height: 90px; }
+    .historia .hueco p { font-size: 34px; }
+    .historia .hueco small { font-size: 26px; }
+
+    .instrucciones {
+      max-width: 620px; margin: 40px auto 0; padding: 0 24px; color: var(--texto-suave); font-size: .92rem;
+    }
+    .instrucciones h2 { font-size: 1.05rem; color: var(--texto); }
+    .instrucciones ol { padding-left: 1.2em; }
+    .instrucciones li { margin-bottom: .5em; }
+  </style>
+</head>
+<body>
+
+  <!-- ============ BARRA DE CONTROLES (no sale en la captura) ============ -->
+  <div class="barra">
+    <a class="marca" href="index.html" style="text-decoration:none;">
+      <span class="marca__ico">D</span>
+      <span class="marca__txt">Plantilla para Historias</span>
+    </a>
+    <div class="barra__grupo">
+      <label>
+        Foto:
+        <select id="selector-foto"></select>
+      </label>
+      <label>
+        Nombres: <input type="text" id="campo-nombres" value="Laura &amp; Marcos">
+      </label>
+      <label>
+        Fecha: <input type="text" id="campo-fecha" value="12 · septiembre · 2026">
+      </label>
+      <button type="button" class="btn btn--linea btn--peque" id="btn-captura">Modo captura</button>
+    </div>
+  </div>
+
+  <!-- ============ ESCENARIO: la historia en formato 1080×1920 ============ -->
+  <div class="escenario">
+    <div class="historia" id="historia">
+      <figure class="historia__foto" style="margin:0;">
+        <img id="historia-img" src="media/portada.jpg" alt="">
+        <div class="hueco" id="historia-hueco" hidden>
+          <svg viewBox="0 0 48 48" aria-hidden="true"><rect x="6" y="11" width="36" height="26" rx="3"/><circle cx="18" cy="21" r="3.5"/><path d="m6 32 10-8 8 6 6-5 12 9"/></svg>
+          <p>Falta esta foto</p>
+          <small>Sube tus fotos a <code>bodas/media/</code></small>
+        </div>
+      </figure>
+
+      <div class="historia__marca">
+        <span class="circ">D</span>
+        <span>Differentissgood</span>
+      </div>
+
+      <div class="historia__pie">
+        <p class="historia__nombres" id="historia-nombres">Laura &amp; Marcos</p>
+        <p class="historia__fecha" id="historia-fecha">12 · septiembre · 2026</p>
+        <span class="historia__cta">Ver el reportaje completo</span>
+        <p class="historia__flecha">↑ desliza hacia arriba</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ INSTRUCCIONES ============ -->
+  <div class="instrucciones">
+    <h2>Cómo publicarlo en una historia de Instagram</h2>
+    <ol>
+      <li>Elige la foto y escribe los nombres y la fecha en la barra de arriba.</li>
+      <li>Pulsa <b>Modo captura</b> para ocultar los controles.</li>
+      <li>Haz una captura de pantalla completa del recuadro (en el móvil, ábrelo desde
+        el navegador a pantalla completa; en el ordenador, usa una herramienta de
+        captura de página completa o las herramientas de desarrollador con la
+        resolución del dispositivo puesta en 1080×1920).</li>
+      <li>Recorta la imagen a 1080×1920 si hiciera falta y súbela como historia en Instagram.</li>
+    </ol>
+    <p>Cambia el nombre de la foto en el selector para reutilizar esta misma plantilla con
+      cualquiera de las fotos que hayas subido a <code>bodas/media/fotos/</code>.</p>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    // Lista de fotos disponibles para la plantilla: se toma de la misma lista
+    // que usa la galería (definida en script.js).
+    (function () {
+      const selector = document.getElementById('selector-foto');
+      const img = document.getElementById('historia-img');
+      const hueco = document.getElementById('historia-hueco');
+
+      const opciones = ['portada.jpg', ...FOTOS_GALERIA];
+      opciones.forEach((nombre) => {
+        const op = document.createElement('option');
+        op.value = `media/${nombre === 'portada.jpg' ? '' : 'fotos/'}${nombre}`;
+        op.textContent = nombre;
+        selector.appendChild(op);
+      });
+
+      function mostrar(src) {
+        hueco.hidden = true;
+        img.style.display = '';
+        img.src = src;
+      }
+      img.addEventListener('error', () => { img.style.display = 'none'; hueco.hidden = false; });
+
+      selector.addEventListener('change', () => mostrar(selector.value));
+      mostrar(selector.value);
+
+      const nombres = document.getElementById('campo-nombres');
+      const fecha = document.getElementById('campo-fecha');
+      nombres.addEventListener('input', () => { document.getElementById('historia-nombres').textContent = nombres.value; });
+      fecha.addEventListener('input', () => { document.getElementById('historia-fecha').textContent = fecha.value; });
+
+      document.getElementById('btn-captura').addEventListener('click', () => {
+        document.body.classList.toggle('captura');
+      });
+    })();
+  </script>
+</body>
+</html>
