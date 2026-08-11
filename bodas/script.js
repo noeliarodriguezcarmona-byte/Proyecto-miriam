@@ -22,8 +22,7 @@ const FOTOS_GALERIA = Array.from({ length: 59 }, (_, i) => `boda-${String(i + 1)
 const FOTOS_ANCHAS = [2, 11, 20, 29, 38, 47, 56];
 
 const VIDEOS_GALERIA = [
-  { archivo: 'boda-01.mp4', titulo: 'Laura & Marcos · Highlight' },
-  { archivo: 'boda-02.mp4', titulo: 'Andrea & Diego · Highlight' },
+  { youtube: 'QNSZ45aThLs', titulo: 'Highlight de boda' },
 ];
 
 /* ---------------------------------------------------------
@@ -160,7 +159,13 @@ function pintarVideos() {
   const fila = $('#fila-videos');
   if (!fila) return;
 
-  fila.innerHTML = VIDEOS_GALERIA.map(({ archivo, titulo }) => `
+  fila.innerHTML = VIDEOS_GALERIA.map(({ archivo, youtube, titulo }) => youtube ? `
+    <figure class="video sube">
+      <iframe src="https://www.youtube-nocookie.com/embed/${youtube}" title="${titulo}"
+              loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen style="width:100%;height:100%;border:0;"></iframe>
+      <figcaption>${titulo}</figcaption>
+    </figure>` : `
     <figure class="video sube">
       <video src="media/videos/${archivo}" controls preload="metadata" playsinline data-archivo="${archivo}"></video>
       <figcaption>${titulo}</figcaption>
